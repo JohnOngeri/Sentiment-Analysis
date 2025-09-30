@@ -22,8 +22,8 @@ print("="*60)
 
 # Load data
 print("\n[1/5] Loading data...")
-train_df = pd.read_csv('data/train_data.csv')
-test_df = pd.read_csv('data/test_data.csv')
+train_df = pd.read_csv('data/train.csv')
+test_df = pd.read_csv('data/test.csv')
 
 # Initialize preprocessor
 print("\n[2/5] Preprocessing text data...")
