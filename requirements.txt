@@ -1,0 +1,33 @@
+# Core Data Science
+pandas>=1.5.0
+numpy>=1.23.0
+
+# Machine Learning
+scikit-learn>=1.2.0
+scipy>=1.10.0
+
+# Deep Learning
+tensorflow>=2.12.0
+keras>=2.12.0
+torch>=2.0.0
+torchvision>=0.15.0
+
+# NLP Libraries
+nltk>=3.8
+gensim>=4.3.0
+transformers>=4.30.0
+datasets>=2.12.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+wordcloud>=1.9.0
+
+# Utilities
+tqdm>=4.65.0
+jupyter>=1.0.0
+notebook>=6.5.0
+
+# Report Generation
+reportlab>=4.0.0
+fpdf2>=2.7.0
