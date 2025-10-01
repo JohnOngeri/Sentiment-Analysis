@@ -1,0 +1,29 @@
+[
+  {
+    "model": "LSTM",
+    "accuracy": 0.86548,
+    "precision": 0.9085218635428776,
+    "recall": 0.8128,
+    "f1_score": 0.857999408858675,
+    "auc": 0.9446817472,
+    "training_time": 445.72203397750854
+  },
+  {
+    "model": "Bidirectional LSTM",
+    "accuracy": 0.8314,
+    "precision": 0.795491832513018,
+    "recall": 0.89216,
+    "f1_score": 0.8410573551038878,
+    "auc": 0.9012697664,
+    "training_time": 218.84014415740967
+  },
+  {
+    "model": "LSTM + MaxPooling",
+    "accuracy": 0.85244,
+    "precision": 0.8950058280283332,
+    "recall": 0.79856,
+    "f1_score": 0.8440366972477065,
+    "auc": 0.9367168576,
+    "training_time": 169.4449918270111
+  }
+]

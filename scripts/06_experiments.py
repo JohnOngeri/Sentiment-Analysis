@@ -36,20 +36,20 @@ os.makedirs('results/experiments', exist_ok=True)
 
 # Load data
 print("\n[1/3] Loading preprocessed data...")
-train_df = pd.read_csv('data/train_preprocessed.csv')
-test_df = pd.read_csv('data/test_preprocessed.csv')
+train_df = pd.read_csv('../data/train_preprocessed.csv')
+test_df = pd.read_csv('../data/test_preprocessed.csv')
 
 # Load embeddings
-X_train_tfidf = np.load('models/embeddings/X_train_tfidf.npy')
-X_test_tfidf = np.load('models/embeddings/X_test_tfidf.npy')
-X_train_w2v = np.load('models/embeddings/X_train_w2v.npy')
-X_test_w2v = np.load('models/embeddings/X_test_w2v.npy')
+X_train_tfidf = np.load('../models/embeddings/X_train_tfidf.npy')
+X_test_tfidf = np.load('../models/embeddings/X_test_tfidf.npy')
+X_train_w2v = np.load('../models/embeddings/X_train_w2v.npy')
+X_test_w2v = np.load('../models/embeddings/X_test_w2v.npy')
 
 y_train = train_df['label'].values
 y_test = test_df['label'].values
 
 # Load tokenizer for deep learning
-with open('models/deep_learning/tokenizer.pkl', 'rb') as f:
+with open('../models/deep_learning/tokenizer.pkl', 'rb') as f:
     tokenizer = pickle.load(f)
 
 X_train_text = train_df['cleaned_text'].values
@@ -108,7 +108,7 @@ print(f"    Accuracy: {metrics['accuracy']:.4f}, F1: {metrics['f1_score']:.4f}")
 # Test 3: Word2Vec with LSTM
 print("\n  Test 1.3: Word2Vec + LSTM")
 from gensim.models import Word2Vec
-w2v_model = Word2Vec.load('models/embeddings/word2vec.model')
+w2v_model = Word2Vec.load('../models/embeddings/word2vec.model')
 
 MAX_WORDS = 10000
 MAX_SEQUENCE_LENGTH = 200
@@ -294,7 +294,7 @@ for idx, metric in enumerate(metrics_exp1):
     ax.grid(True, alpha=0.3, axis='y')
 
 plt.tight_layout()
-plt.savefig('results/experiments/experiment1_visualization.png', dpi=300, bbox_inches='tight')
+plt.savefig('../results/experiments/experiment1_visualization.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("  ✓ Experiment 1 visualization saved")
 

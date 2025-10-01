@@ -15,17 +15,17 @@ print("FINAL MODEL EVALUATION AND COMPARISON")
 print("="*70)
 
 # Create results directory
-os.makedirs('results/final_evaluation', exist_ok=True)
+os.makedirs('../results/final_evaluation', exist_ok=True)
 
 # Load all results
 print("\n[1/3] Loading all model results...")
 
 # Traditional ML results
-with open('results/traditional_ml/detailed_results.json', 'r') as f:
+with open('../results/traditional_ml/detailed_results.json', 'r') as f:
     trad_ml_results = json.load(f)
 
 # Deep Learning results
-with open('results/deep_learning/detailed_results.json', 'r') as f:
+with open('../results/deep_learning/detailed_results.json', 'r') as f:
     dl_results = json.load(f)
 
 # Combine all results
@@ -43,7 +43,7 @@ print(comparison_df.to_string(index=False))
 print("="*80)
 
 # Save comprehensive comparison
-comparison_df.to_csv('results/final_evaluation/all_models_comparison.csv', index=False)
+comparison_df.to_csv('../results/final_evaluation/all_models_comparison.csv', index=False)
 
 # ===== VISUALIZATIONS =====
 print("\n[2/3] Creating comprehensive visualizations...")
@@ -68,7 +68,7 @@ for idx, metric in enumerate(metrics):
         ax.text(v + 0.01, i, f'{v:.4f}', va='center', fontweight='bold', fontsize=9)
 
 plt.tight_layout()
-plt.savefig('results/final_evaluation/all_models_comparison.png', dpi=300, bbox_inches='tight')
+plt.savefig('../results/final_evaluation/all_models_comparison.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("  ✓ All models comparison saved")
 
@@ -121,7 +121,7 @@ for i, v in enumerate([trad_ml_data['training_time'].mean(), dl_data['training_t
     axes[1].text(i, v + 5, f'{v:.1f}s', ha='center', fontweight='bold')
 
 plt.tight_layout()
-plt.savefig('results/final_evaluation/traditional_vs_deep_learning.png', dpi=300, bbox_inches='tight')
+plt.savefig('../results/final_evaluation/traditional_vs_deep_learning.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("  ✓ Traditional ML vs Deep Learning comparison saved")
 
@@ -156,7 +156,7 @@ legend_elements = [
 plt.legend(handles=legend_elements, fontsize=10)
 
 plt.tight_layout()
-plt.savefig('results/final_evaluation/performance_vs_time_tradeoff.png', dpi=300, bbox_inches='tight')
+plt.savefig('../results/final_evaluation/performance_vs_time_tradeoff.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("  ✓ Performance vs time trade-off saved")
 
@@ -195,7 +195,7 @@ analysis = {
 }
 
 # Save analysis
-with open('results/final_evaluation/analysis_summary.json', 'w') as f:
+with open('../results/final_evaluation/analysis_summary.json', 'w') as f:
     json.dump(analysis, f, indent=2)
 
 print("\n" + "="*70)
