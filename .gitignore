@@ -1,2 +1,3 @@
 *.csv
 venv/
+models/embeddings/*.npy
