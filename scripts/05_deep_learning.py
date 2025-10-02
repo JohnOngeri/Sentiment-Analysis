@@ -34,8 +34,8 @@ tf.random.set_seed(42)
 
 # Load preprocessed data
 print("\n[1/7] Loading preprocessed data...")
-train_df = pd.read_csv('data/train_preprocessed.csv')
-test_df = pd.read_csv('data/test_preprocessed.csv')
+train_df = pd.read_csv('../data/train_preprocessed.csv')
+test_df = pd.read_csv('../data/test_preprocessed.csv')
 
 X_train_text = train_df['cleaned_text'].values
 X_test_text = test_df['cleaned_text'].values
@@ -46,8 +46,8 @@ print(f"  - Training samples: {len(X_train_text)}")
 print(f"  - Test samples: {len(X_test_text)}")
 
 # Create results directory
-os.makedirs('results/deep_learning', exist_ok=True)
-os.makedirs('models/deep_learning', exist_ok=True)
+os.makedirs('../results/deep_learning', exist_ok=True)
+os.makedirs('../models/deep_learning', exist_ok=True)
 
 # ===== TOKENIZATION AND PADDING =====
 print("\n[2/7] Tokenizing and padding sequences...")
@@ -75,7 +75,7 @@ print(f"  - Training shape: {X_train_pad.shape}")
 print(f"  - Test shape: {X_test_pad.shape}")
 
 # Save tokenizer
-with open('models/deep_learning/tokenizer.pkl', 'wb') as f:
+with open('../models/deep_learning/tokenizer.pkl', 'wb') as f:
     pickle.dump(tokenizer, f)
 print("  ✓ Tokenizer saved")
 
@@ -83,7 +83,7 @@ print("  ✓ Tokenizer saved")
 print("\n[3/7] Creating embedding matrix from Word2Vec...")
 
 from gensim.models import Word2Vec
-w2v_model = Word2Vec.load('models/embeddings/word2vec.model')
+w2v_model = Word2Vec.load('../models/embeddings/word2vec.model')
 
 # Create embedding matrix
 embedding_matrix = np.zeros((MAX_WORDS, EMBEDDING_DIM))
@@ -134,7 +134,7 @@ model_lstm.summary()
 # Callbacks
 callbacks = [
     EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True, verbose=1),
-    ModelCheckpoint('models/deep_learning/lstm_best.keras', save_best_only=True, monitor='val_accuracy', verbose=1),
+    ModelCheckpoint('../models/deep_learning/lstm_best.keras', save_best_only=True, monitor='val_accuracy', verbose=1),
     ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=2, min_lr=0.00001, verbose=1)
 ]
 
@@ -170,7 +170,7 @@ print(f"  - F1-Score:  {lstm_metrics['f1_score']:.4f}")
 print(f"  - AUC:       {lstm_metrics['auc']:.4f}")
 
 # Save model
-model_lstm.save('models/deep_learning/lstm_final.keras')
+model_lstm.save('../models/deep_learning/lstm_final.keras')
 print("  ✓ Model saved")
 
 # Plot training history
@@ -181,11 +181,11 @@ history_dict = {
     'val_loss': history_lstm.history['val_loss']
 }
 
-plot_training_history(history_dict, "LSTM", 'results/deep_learning/lstm_training_history.png')
+plot_training_history(history_dict, "LSTM", '../results/deep_learning/lstm_training_history.png')
 print("  ✓ Training history saved")
 
 # Plot confusion matrix
-plot_confusion_matrix(y_test, y_pred_lstm, "LSTM", 'results/deep_learning/lstm_confusion_matrix.png')
+plot_confusion_matrix(y_test, y_pred_lstm, "LSTM", '../results/deep_learning/lstm_confusion_matrix.png')
 print("  ✓ Confusion matrix saved")
 
 # Print detailed report
@@ -252,7 +252,7 @@ print(f"  - F1-Score:  {bilstm_metrics['f1_score']:.4f}")
 print(f"  - AUC:       {bilstm_metrics['auc']:.4f}")
 
 # Save model
-model_bilstm.save('models/deep_learning/bilstm_final.keras')
+model_bilstm.save('../models/deep_learning/bilstm_final.keras')
 print("  ✓ Model saved")
 
 # ===== MODEL 3: LSTM WITH GLOBAL MAX POOLING =====
@@ -317,7 +317,7 @@ print(f"  - F1-Score:  {lstm_pool_metrics['f1_score']:.4f}")
 print(f"  - AUC:       {lstm_pool_metrics['auc']:.4f}")
 
 # Save model
-model_lstm_pool.save('models/deep_learning/lstm_pool_final.keras')
+model_lstm_pool.save('../models/deep_learning/lstm_pool_final.keras')
 print("  ✓ Model saved")
 
 # ===== COMPARISON =====
@@ -336,10 +336,10 @@ print(comparison_df.to_string(index=False))
 print("="*90)
 
 # Save comparison
-comparison_df.to_csv('results/deep_learning/model_comparison.csv', index=False)
+comparison_df.to_csv('../results/deep_learning/model_comparison.csv', index=False)
 
 # Save detailed results
-with open('results/deep_learning/detailed_results.json', 'w') as f:
+with open('../results/deep_learning/detailed_results.json', 'w') as f:
     json.dump(all_dl_results, f, indent=2)
 
 # Create comparison visualization
@@ -373,7 +373,7 @@ for idx, metric in enumerate(metrics_to_plot):
             ax.text(i, v + 0.02, f'{v:.4f}', ha='center', fontweight='bold', fontsize=9)
 
 plt.tight_layout()
-plt.savefig('results/deep_learning/models_comparison.png', dpi=300, bbox_inches='tight')
+plt.savefig('../results/deep_learning/models_comparison.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("\n✓ Comparison visualization saved")
 
@@ -396,7 +396,7 @@ for idx, (hist, name) in enumerate(histories):
     axes[idx].grid(True, alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('results/deep_learning/all_training_histories.png', dpi=300, bbox_inches='tight')
+plt.savefig('../results/deep_learning/all_training_histories.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("✓ All training histories saved")
 

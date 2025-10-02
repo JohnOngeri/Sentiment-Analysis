@@ -1,0 +1,30 @@
+[
+  {
+    "model": "Logistic Regression",
+    "accuracy": 0.88308,
+    "precision": 0.8793472233225066,
+    "recall": 0.888,
+    "f1_score": 0.8836524300441826,
+    "auc": 0.9536375871999999,
+    "training_time": 1.1239545345306396,
+    "cv_accuracy": 0.86416,
+    "cv_std": 0.004775604673755985
+  },
+  {
+    "model": "SVM",
+    "accuracy": 0.86916,
+    "precision": 0.8709703352359515,
+    "recall": 0.86672,
+    "f1_score": 0.8688399695256426,
+    "training_time": 0.6482031345367432
+  },
+  {
+    "model": "Naive Bayes",
+    "accuracy": 0.85068,
+    "precision": 0.8519470092332396,
+    "recall": 0.84888,
+    "f1_score": 0.8504107393307955,
+    "auc": 0.9275895936,
+    "training_time": 0.4764716625213623
+  }
+]

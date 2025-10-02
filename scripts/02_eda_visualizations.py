@@ -16,7 +16,7 @@ sns.set_style("whitegrid")
 plt.rcParams['figure.figsize'] = (12, 8)
 
 print("Loading data for EDA...")
-train_df = pd.read_csv('data/train_data.csv')
+train_df = pd.read_csv('../data/train_data.csv')
 
 # Create visualizations directory
 import os
@@ -34,7 +34,7 @@ plt.xlabel('Sentiment Class', fontsize=12)
 for i, v in enumerate(sentiment_counts.values):
     plt.text(i, v + 200, str(v), ha='center', fontweight='bold', fontsize=12)
 plt.tight_layout()
-plt.savefig('visualizations/01_sentiment_distribution.png', dpi=300, bbox_inches='tight')
+plt.savefig('../visualizations/01_sentiment_distribution.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("✓ Saved: visualizations/01_sentiment_distribution.png")
 
@@ -62,7 +62,7 @@ axes[1].set_ylabel('Number of Words', fontsize=12)
 axes[1].set_xlabel('Sentiment', fontsize=12)
 
 plt.tight_layout()
-plt.savefig('visualizations/02_review_length_distribution.png', dpi=300, bbox_inches='tight')
+plt.savefig('../visualizations/02_review_length_distribution.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("✓ Saved: visualizations/02_review_length_distribution.png")
 
@@ -96,7 +96,7 @@ axes[1].set_title('Most Common Words in Negative Reviews', fontsize=14, fontweig
 axes[1].axis('off')
 
 plt.tight_layout()
-plt.savefig('visualizations/03_wordclouds.png', dpi=300, bbox_inches='tight')
+plt.savefig('../visualizations/03_wordclouds.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("✓ Saved: visualizations/03_wordclouds.png")
 
@@ -139,7 +139,7 @@ axes[1].set_xlabel('Frequency', fontsize=12)
 axes[1].invert_yaxis()
 
 plt.tight_layout()
-plt.savefig('visualizations/04_top_words_comparison.png', dpi=300, bbox_inches='tight')
+plt.savefig('../visualizations/04_top_words_comparison.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("✓ Saved: visualizations/04_top_words_comparison.png")
 
@@ -201,7 +201,7 @@ table.scale(1, 2)
 axes[1, 1].set_title('Review Length Statistics', fontsize=12, fontweight='bold', pad=20)
 
 plt.tight_layout()
-plt.savefig('visualizations/05_review_length_detailed.png', dpi=300, bbox_inches='tight')
+plt.savefig('../visualizations/05_review_length_detailed.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("✓ Saved: visualizations/05_review_length_detailed.png")
 
@@ -226,7 +226,7 @@ for i, v in enumerate(percentages.values):
     axes[1].text(v + 1, i, f'{v:.1f}%', va='center', fontweight='bold')
 
 plt.tight_layout()
-plt.savefig('visualizations/06_class_balance.png', dpi=300, bbox_inches='tight')
+plt.savefig('../visualizations/06_class_balance.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("✓ Saved: visualizations/06_class_balance.png")
 
