@@ -23,12 +23,12 @@ print("="*60)
 
 # Load preprocessed data
 print("\n[1/5] Loading preprocessed data and embeddings...")
-train_df = pd.read_csv('../data/train_preprocessed.csv')
-test_df = pd.read_csv('../data/test_preprocessed.csv')
+train_df = pd.read_csv('data/train_preprocessed.csv')
+test_df = pd.read_csv('data/test_preprocessed.csv')
 
 # Load TF-IDF embeddings
-X_train = np.load('../models/embeddings/X_train_tfidf.npy')
-X_test = np.load('../models/embeddings/X_test_tfidf.npy')
+X_train = np.load('models/embeddings/X_train_tfidf.npy')
+X_test = np.load('models/embeddings/X_test_tfidf.npy')
 y_train = train_df['label'].values
 y_test = test_df['label'].values
 
@@ -37,8 +37,8 @@ print(f"  - Test samples: {X_test.shape[0]}")
 print(f"  - Features: {X_train.shape[1]}")
 
 # Create results directory
-os.makedirs('../results/traditional_ml', exist_ok=True)
-os.makedirs('../models/traditional_ml', exist_ok=True)
+os.makedirs('results/traditional_ml', exist_ok=True)
+os.makedirs('models/traditional_ml', exist_ok=True)
 
 # ===== MODEL 1: LOGISTIC REGRESSION =====
 print("\n[2/5] Training Logistic Regression...")
@@ -86,13 +86,13 @@ lr_metrics['cv_accuracy'] = cv_scores.mean()
 lr_metrics['cv_std'] = cv_scores.std()
 
 # Save model
-with open('../models/traditional_ml/logistic_regression.pkl', 'wb') as f:
+with open('models/traditional_ml/logistic_regression.pkl', 'wb') as f:
     pickle.dump(lr_model, f)
 print("  ✓ Model saved")
 
 # Plot confusion matrix
 plot_confusion_matrix(y_test, y_pred_lr, "Logistic Regression", 
-                     '../results/traditional_ml/lr_confusion_matrix.png')
+                     'results/traditional_ml/lr_confusion_matrix.png')
 print("  ✓ Confusion matrix saved")
 
 # Print detailed report
@@ -133,13 +133,13 @@ print(f"  - Recall:    {svm_metrics['recall']:.4f}")
 print(f"  - F1-Score:  {svm_metrics['f1_score']:.4f}")
 
 # Save model
-with open('../models/traditional_ml/svm.pkl', 'wb') as f:
+with open('models/traditional_ml/svm.pkl', 'wb') as f:
     pickle.dump(svm_model, f)
 print("  ✓ Model saved")
 
 # Plot confusion matrix
 plot_confusion_matrix(y_test, y_pred_svm, "Support Vector Machine", 
-                     '../results/traditional_ml/svm_confusion_matrix.png')
+                     'results/traditional_ml/svm_confusion_matrix.png')
 print("  ✓ Confusion matrix saved")
 
 # ===== MODEL 3: NAIVE BAYES =====
@@ -175,13 +175,13 @@ print(f"  - F1-Score:  {nb_metrics['f1_score']:.4f}")
 print(f"  - AUC:       {nb_metrics['auc']:.4f}")
 
 # Save model
-with open('../models/traditional_ml/naive_bayes.pkl', 'wb') as f:
+with open('models/traditional_ml/naive_bayes.pkl', 'wb') as f:
     pickle.dump(nb_model, f)
 print("  ✓ Model saved")
 
 # Plot confusion matrix
 plot_confusion_matrix(y_test, y_pred_nb, "Naive Bayes", 
-                     '../results/traditional_ml/nb_confusion_matrix.png')
+                     'results/traditional_ml/nb_confusion_matrix.png')
 print("  ✓ Confusion matrix saved")
 
 # ===== COMPARISON =====
@@ -200,10 +200,10 @@ print(comparison_df.to_string(index=False))
 print("="*80)
 
 # Save comparison
-comparison_df.to_csv('../results/traditional_ml/model_comparison.csv', index=False)
+comparison_df.to_csv('results/traditional_ml/model_comparison.csv', index=False)
 
 # Save detailed results
-with open('../results/traditional_ml/detailed_results.json', 'w') as f:
+with open('results/traditional_ml/detailed_results.json', 'w') as f:
     json.dump(all_results, f, indent=2)
 
 # Create comparison visualization
@@ -231,7 +231,7 @@ for idx, metric in enumerate(metrics_to_plot):
         ax.text(i, v + 0.02, f'{v:.4f}', ha='center', fontweight='bold', fontsize=10)
 
 plt.tight_layout()
-plt.savefig('../results/traditional_ml/models_comparison.png', dpi=300, bbox_inches='tight')
+plt.savefig('results/traditional_ml/models_comparison.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("\n✓ Comparison visualization saved")
 
@@ -246,7 +246,7 @@ plt.grid(True, alpha=0.3, axis='y')
 for i, v in enumerate(training_times):
     plt.text(i, v + 0.5, f'{v:.2f}s', ha='center', fontweight='bold')
 plt.tight_layout()
-plt.savefig('../results/traditional_ml/training_time_comparison.png', dpi=300, bbox_inches='tight')
+plt.savefig('results/traditional_ml/training_time_comparison.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("✓ Training time comparison saved")
 
