@@ -1,2 +1,2 @@
 venv/
-models/embeddings/
+models/embeddings/*.npy
