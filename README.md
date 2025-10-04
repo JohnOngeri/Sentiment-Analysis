@@ -2,6 +2,7 @@
 
 A comprehensive sentiment analysis project implementing both traditional machine learning and deep learning approaches to classify movie reviews as positive or negative.
 
+
 ## Project Overview
 
 This project analyzes the IMDB Movie Reviews dataset (50,000 reviews) using multiple machine learning techniques, comparing traditional ML models with deep learning architectures.
