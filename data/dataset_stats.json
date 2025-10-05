@@ -1,0 +1,18 @@
+{
+  "dataset_name": "IMDB Movie Reviews",
+  "source": "Stanford AI Lab",
+  "total_samples": 50000,
+  "train_samples": 25000,
+  "test_samples": 25000,
+  "num_classes": 2,
+  "classes": [
+    "Negative",
+    "Positive"
+  ],
+  "class_balance": {
+    "0": 0.5,
+    "1": 0.5
+  },
+  "avg_review_length": 233.7872,
+  "median_review_length": 174.0
+}

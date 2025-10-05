@@ -45,8 +45,8 @@ print(f"\n=== Review Length Statistics ===")
 print(train_df['review_length'].describe())
 
 # Save processed data
-train_df.to_csv('../data/train_data.csv', index=False)
-test_df.to_csv('../data/test_data.csv', index=False)
+train_df.to_csv('data/train_data.csv', index=False)
+test_df.to_csv('data/test_data.csv', index=False)
 
 # Save summary statistics
 stats = {
@@ -62,7 +62,7 @@ stats = {
     'median_review_length': float(train_df['review_length'].median())
 }
 
-with open('../data/dataset_stats.json', 'w') as f:
+with open('data/dataset_stats.json', 'w') as f:
     json.dump(stats, f, indent=2)
 
 print("\n✓ Dataset loaded and saved successfully!")

@@ -22,8 +22,8 @@ print("="*60)
 
 # Load data
 print("\n[1/5] Loading data...")
-train_df = pd.read_csv('../data/train.csv')
-test_df = pd.read_csv('../data/test.csv')
+train_df = pd.read_csv('data/train_data.csv')
+test_df = pd.read_csv('data/test_data.csv')
 
 # Initialize preprocessor
 print("\n[2/5] Preprocessing text data...")
@@ -38,8 +38,8 @@ print("  - Processing test data...")
 test_df['cleaned_text'] = [preprocessor.preprocess(text) for text in tqdm(test_df['text'], desc="Testing")]
 
 # Save preprocessed data
-train_df.to_csv('../data/train_preprocessed.csv', index=False)
-test_df.to_csv('../data/test_preprocessed.csv', index=False)
+train_df.to_csv('data/train_preprocessed.csv', index=False)
+test_df.to_csv('data/test_preprocessed.csv', index=False)
 print("  ✓ Preprocessed data saved")
 
 # ===== EMBEDDING 1: TF-IDF =====
@@ -59,13 +59,13 @@ print(f"  - Vocabulary size: {len(tfidf_vectorizer.vocabulary_)}")
 print(f"  - Feature names (sample): {tfidf_vectorizer.get_feature_names_out()[:10]}")
 
 # Save TF-IDF vectorizer
-os.makedirs('../models/embeddings', exist_ok=True)
-with open('../models/embeddings/tfidf_vectorizer.pkl', 'wb') as f:
+os.makedirs('models/embeddings', exist_ok=True)
+with open('models/embeddings/tfidf_vectorizer.pkl', 'wb') as f:
     pickle.dump(tfidf_vectorizer, f)
 
 # Save TF-IDF matrices
-np.save('../models/embeddings/X_train_tfidf.npy', X_train_tfidf.toarray())
-np.save('../models/embeddings/X_test_tfidf.npy', X_test_tfidf.toarray())
+np.save('models/embeddings/X_train_tfidf.npy', X_train_tfidf.toarray())
+np.save('models/embeddings/X_test_tfidf.npy', X_test_tfidf.toarray())
 print("  ✓ TF-IDF embeddings saved")
 
 # ===== EMBEDDING 2: Word2Vec =====
@@ -90,7 +90,7 @@ print(f"  - Word2Vec vocabulary size: {len(w2v_model.wv)}")
 print(f"  - Vector dimension: {w2v_model.wv.vector_size}")
 
 # Save Word2Vec model
-w2v_model.save('../models/embeddings/word2vec.model')
+w2v_model.save('models/embeddings/word2vec.model')
 print("  ✓ Word2Vec model saved")
 
 # Create document vectors by averaging word vectors
@@ -114,8 +114,8 @@ print(f"  - Train W2V shape: {X_train_w2v.shape}")
 print(f"  - Test W2V shape: {X_test_w2v.shape}")
 
 # Save Word2Vec document vectors
-np.save('../models/embeddings/X_train_w2v.npy', X_train_w2v)
-np.save('../models/embeddings/X_test_w2v.npy', X_test_w2v)
+np.save('models/embeddings/X_train_w2v.npy', X_train_w2v)
+np.save('models/embeddings/X_test_w2v.npy', X_test_w2v)
 print("  ✓ Word2Vec document vectors saved")
 
 # ===== EMBEDDING COMPARISON VISUALIZATION =====
@@ -183,8 +183,8 @@ axes[1, 1].set_title('Embedding Comparison', fontsize=14, fontweight='bold', pad
 plt.tight_layout()
 
 #creating the visualizationsif not exist
-os.makedirs('../visualizations', exist_ok=True)
-plt.savefig('../visualizations/07_embedding_comparison.png', dpi=300, bbox_inches='tight')
+os.makedirs('visualizations', exist_ok=True)
+plt.savefig('visualizations/07_embedding_comparison.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("  ✓ Saved: visualizations/07_embedding_comparison.png")
 
