@@ -1,6 +1,4 @@
 # Sentiment Analysis of IMDB Movie Reviews
----
-
 ## Project Overview
 
 This repository contains the **implementation, experimentation, and evaluation code** for a sentiment analysis system trained on the IMDB Movie Reviews dataset.
@@ -10,8 +8,6 @@ The project explores two key modeling paradigms:
 2. **Deep Learning** — Bidirectional LSTM (BiLSTM) network using Word2Vec embeddings.
 
 The objective was to evaluate both approaches in terms of **performance, interpretability, and computational efficiency**, and determine the most appropriate model for text-based sentiment classification tasks.
-
----
 
 ## Repository Structure
 
@@ -46,8 +42,6 @@ Sentiment-Analysis/
 └── report/                       # Academic report and deliverables
     └── Sentiment_Analysis_Report.pdf
 ```
-
----
 
 ## Setup and Installation
 
@@ -84,8 +78,6 @@ The project primarily uses:
 * `gensim` — Word2Vec embeddings
 * `matplotlib`, `seaborn` — visualization
 
----
-
 ## Data Preprocessing Pipeline
 
 Preprocessing steps (implemented in `01_data_cleaning.py`):
@@ -98,8 +90,6 @@ Preprocessing steps (implemented in `01_data_cleaning.py`):
 6. Optional length filtering
 
 Outputs are stored as cleaned token lists or joined sentences for later embedding generation.
-
----
 
 ## Feature Engineering
 
@@ -116,8 +106,6 @@ Two main feature extraction strategies were employed:
   * 100-dimensional vectors trained on the IMDB corpus
   * Skip-gram architecture
   * Used to initialize embedding weights in the neural model
-
----
 
 ## Model Training and Evaluation
 
@@ -138,8 +126,6 @@ Two main feature extraction strategies were employed:
 * Loss: Binary Cross-Entropy
 * Metrics: Accuracy, Precision, Recall, F1-Score, AUC
 
----
-
 ## Experimental Configuration
 
 * **Hardware:** Apple M-series chip, 8-core CPU
@@ -151,8 +137,6 @@ Two main feature extraction strategies were employed:
   * Learning rates tested: 0.001, 0.0005
 * **Hyperparameter Tuning:** Grid search for LR; manual tuning for BiLSTM.
 
----
-
 ## Performance Summary
 
 | Model                         | Accuracy | Precision | Recall | F1-Score |
@@ -163,8 +147,6 @@ Two main feature extraction strategies were employed:
 | Naïve Bayes                   |   0.85   |    0.85   |  0.84  |   0.85   |
 
 ➡️ **Key insight:** Logistic Regression outperformed BiLSTM slightly while being far more computationally efficient.
-
----
 
 ## Reproducibility
 
@@ -187,15 +169,11 @@ To reproduce EDA visualizations:
 python scripts/06_visualizations.py
 ```
 
----
-
 ## Results and Artifacts
 
 * Trained models are stored in `/models/`
 * Visualizations and metrics are generated in `/notebooks/` and `/outputs/`
 * Preprocessing logs and performance summaries are automatically saved in `/logs/`
-
----
 
 ## Team Contributions
 
@@ -206,15 +184,12 @@ python scripts/06_visualizations.py
 | **Lesly Ndizeye** | Deep Learning & Experiments    | Word2Vec embedding training, BiLSTM architecture        |
 | **Ivan Shema**    | Evaluation & Documentation     | Model comparison, performance analysis, report writing  |
 
----
 
 ## References
 
 * Maas et al. (2011). *Learning Word Vectors for Sentiment Analysis*.
 * Mikolov et al. (2013). *Efficient Estimation of Word Representations in Vector Space.*
 * Hugging Face Datasets: [IMDB Reviews](https://huggingface.co/datasets/imdb)
-
----
 
 ## Summary
 
