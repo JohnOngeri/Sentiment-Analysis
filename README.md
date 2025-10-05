@@ -1,11 +1,4 @@
 # Sentiment Analysis of IMDB Movie Reviews
-
-**Course:** Machine Learning Techniques I
-**Authors:** John Ouma, Omar Keita, Lesly Ndizeye, Ivan Shema
-**Instructor:** —
-**Institution:** African Leadership University
-**Date:** October 2025
-
 ---
 
 ## Project Overview
